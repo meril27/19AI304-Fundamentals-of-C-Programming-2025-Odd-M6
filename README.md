@@ -60,7 +60,8 @@ int main() {
 ```
 # Output:
 
-<img width="1632" height="693" alt="image" src="https://github.com/user-attachments/assets/39a1dca7-d163-4edf-9038-f577414303b4" />
+<img width="1628" height="695" alt="image" src="https://github.com/user-attachments/assets/807c7f86-cc47-4009-a593-0add6926b9ac" />
+
 
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
@@ -217,7 +218,61 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 10:
   Stop
 # Program:
+```c
+#include <stdio.h>
+
+struct employee {
+    int eno;
+    char ename[50];
+    float salary;
+};
+
+int main() {
+    struct employee emp[50];
+    int n, i;
+    float high;
+
+    printf("Enter the number of employees: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++) {
+        printf("\nEnter the details of employee %d:\n", i + 1);
+
+        printf("Enter the employee number: ");
+        scanf("%d", &emp[i].eno);
+
+        printf("Enter the employee name: ");
+        scanf(" %[^\n]", emp[i].ename);
+
+        printf("Enter the employee salary: ");
+        scanf("%f", &emp[i].salary);
+    }
+
+    high = emp[0].salary;
+
+    for (i = 1; i < n; i++) {
+        if (emp[i].salary > high) {
+            high = emp[i].salary;
+        }
+    }
+
+    printf("\nEmployee(s) with the highest salary:\n");
+
+    for (i = 0; i < n; i++) {
+        if (emp[i].salary == high) {
+            printf("Employee Number: %d\n", emp[i].eno);
+            printf("Employee Name  : %s\n", emp[i].ename);
+            printf("Employee Salary: %.2f\n\n", emp[i].salary);
+        }
+    }
+
+    return 0;
+}
+```
 # Output:
+
+<img width="1617" height="902" alt="image" src="https://github.com/user-attachments/assets/bc052e6d-1636-4306-8268-ec14870d274e" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -260,7 +315,53 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 9:
   Stop
 # Program:
+```c
+#include <stdio.h>
+
+struct date {
+    int c_date, c_month, c_year;
+    int b_date, b_month, b_year;
+    int cal_date, cal_month, cal_year;
+};
+
+void findAge(struct date *d) {
+    int month[] = {31,28,31,30,31,30,31,31,30,31,30,31};
+
+    if(d->b_date > d->c_date) {
+        d->c_date += month[d->c_month - 2];
+        d->c_month--;
+    }
+
+    if(d->b_month > d->c_month) {
+        d->c_year--;
+        d->c_month += 12;
+    }
+
+    d->cal_date = d->c_date - d->b_date;
+    d->cal_month = d->c_month - d->b_month;
+    d->cal_year = d->c_year - d->b_year;
+}
+
+int main() {
+    struct date d;
+
+    printf("Enter the current date (dd mm yyyy): ");
+    scanf("%d.%d.%d", &d.c_date, &d.c_month, &d.c_year);
+
+    printf("Enter the birth date (dd mm yyyy): ");
+    scanf("%d.%d.%d", &d.b_date, &d.b_month, &d.b_year);
+
+    findAge(&d);
+    printf("\n");
+    printf("Present Age = %d Years %d Months %d Days", d.cal_year, d.cal_month, d.cal_date);
+
+    return 0;
+}
+```
 # Output:
+
+<img width="1627" height="895" alt="image" src="https://github.com/user-attachments/assets/4aaddaed-8362-48c2-9c63-14ef0d47c4e6" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -296,7 +397,33 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 10:
   Stop
 # Program:
+```c
+#include <stdio.h>
+
+union abc {
+    int a;
+    char b;
+};
+
+int main() {
+    union abc var;
+    union abc *ptr;
+
+    ptr = &var;
+
+    printf("Enter the integer value: ");
+    scanf("%d", &ptr->a);
+
+    printf("Integer format: %d\n", ptr->a);
+    printf("Character format: %c\n", ptr->a);
+
+    return 0;
+}
+```
 # Output:
+
+<img width="1630" height="645" alt="image" src="https://github.com/user-attachments/assets/f0ffeaf4-b936-434e-a96b-670ccf082602" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
